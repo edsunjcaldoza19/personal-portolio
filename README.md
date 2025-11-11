@@ -29,7 +29,7 @@ Personal-Portfolio/
 - **Color Palette**: 
   - Base: White / Light Gray
   - Accent: #00ADB5 (Teal)
-- **Layout**: One-page scroll with 8 main sections
+- **Layout**: One-page scroll with 9 main sections
 
 ## 📑 Sections
 
@@ -39,8 +39,9 @@ Personal-Portfolio/
 4. **Portfolio** - 6 featured projects with hover effects
 5. **Testimonials** - Client feedback
 6. **Resume Snapshot** - Experience and skills overview
-7. **Contact** - Email and social media links
-8. **Footer** - Copyright and back to top link
+7. **Education** - Academic qualifications and achievements
+8. **Contact** - Email and social media links
+9. **Footer** - Copyright and back to top link
 
 ## 🚀 Getting Started
 
