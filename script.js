@@ -119,20 +119,66 @@ document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
     });
 });
 
-// Typing animation for hero text (optional enhancement)
-function typeWriter(element, text, speed = 50) {
-    let i = 0;
-    element.textContent = '';
+// Typing animation for name in hero section
+function typeNameAnimation() {
+    const nameElement = document.getElementById('typing-name');
+    if (!nameElement) return;
     
+    const name = 'Edsun!';
+    const typingSpeed = 100; // milliseconds per character
+    const eraseSpeed = 50; // milliseconds per character (faster erasing)
+    const pauseAfterTyping = 5000; // 5 seconds pause after typing
+    
+    let animationTimeout = null;
+    
+    // Type the name
     function type() {
-        if (i < text.length) {
-            element.textContent += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
+        let index = 0;
+        nameElement.textContent = '';
+        
+        function typeCharacter() {
+            if (index < name.length) {
+                nameElement.textContent += name[index];
+                index++;
+                animationTimeout = setTimeout(typeCharacter, typingSpeed);
+            } else {
+                // Finished typing, pause for 5 seconds then erase
+                animationTimeout = setTimeout(() => {
+                    erase();
+                }, pauseAfterTyping);
+            }
         }
+        
+        typeCharacter();
     }
     
+    // Erase the name
+    function erase() {
+        let index = name.length;
+        
+        function eraseCharacter() {
+            if (index > 0) {
+                index--;
+                nameElement.textContent = name.substring(0, index);
+                animationTimeout = setTimeout(eraseCharacter, eraseSpeed);
+            } else {
+                // Finished erasing, immediately type again
+                type();
+            }
+        }
+        
+        eraseCharacter();
+    }
+    
+    // Start the animation by typing
     type();
+}
+
+// Initialize typing animation when DOM is loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', typeNameAnimation);
+} else {
+    typeNameAnimation();
 }
 
 
